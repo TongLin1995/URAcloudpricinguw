@@ -35,6 +35,30 @@ With the introduction of cloud computing, more and more companies choose to use 
 When bidding the cloud, every bidder will come across with this problem: what is the optimal bidding strategy for me? Many scholars and researchers have published papers in this topic, trying to find the optimal bidding strategy. However, since each user has different needs when using cloud, there will never be an optimal strategy that can be applied to every user. In particularly, this article take each bidder's "true value"(i.e. the revenue he will have if he pay nothing for the service) into account. We will treat spot market as an sealed-bid N+1 auction market with several assumptions including Spot-pricing market is a supply-demand market, even though there are some evidences that providers like Amazon are manually hiding instances to reduce demand. The contribution of this article will give an full set of algorithms of how to bid, when to bid and which price to choose.
 
 
+\section{Introduction}
+
+With the increasing innovation of computers, computing becomes much important than before. Individual programmers who want to perform large computations will need helps from cloud computing. By definition of Wikipedia, "Cloud computing, also on-demand computing, is a kind of Internet-based computing that provides shared processing resources and data to computers and other devices on demand. It is a model for enabling ubiquitous, on-demand access to a shared pool of configurable computing resources." We can see many real world application of cloud.
+
+For the terminology we will use, the provider means cloud provider like Amazon EC2. Bidders means people who submit their bid in 
+
+\section{Background and inspirations}
+
+The model I used was inspired by auction markets. I used the fact that the spot pricing market is similar to N+1 sealed-bid auction market.
+
+\section{Model}
+
+For bidders, they will first of all observe the historical mean spot price to determine which bid value will he choose to use. After all bidder submit their bid, the provider will 
+
+
+I designed a notion of "True value", which is the total utility of the user when he or she pays nothing for the services.
+
+%\section{Single bidder's optimal bidding strategy}
+
+%\section{Experiment of applying our strategy to historical data} 
+
+%\section{Conclusion}
+
+%\section{References}
 
 \end{document}
 
