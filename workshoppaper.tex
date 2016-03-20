@@ -2,6 +2,7 @@
 \documentclass[11pt]{article}
 
 \usepackage{times}
+\usepackage{amsmath}
 \setlength{\textwidth}{6in}
 \setlength{\textheight}{8.75in}
 \setlength{\oddsidemargin}{.3in}
@@ -47,18 +48,35 @@ The model I used was inspired by auction markets. I used the fact that the spot 
 
 \section{Model}
 
-For bidders, they will first of all observe the historical mean spot price to determine which bid value will he choose to use. After all bidder submit their bid, the provider will 
+For bidders, they will first of all observe the historical mean spot price to determine which bid value will he choose to use. After all bidder submit their bid, the provider will use their algorithm to determine a spot price. All bids with bid price over spot price got accepted. Now, consider a model with following assumptions. Each bidder only bid one unit of cloud. So they will only submit one bid price and the outcome for them is accepted or not. Ignore the unused time for instances, historically around 70 percent of the whole successful bidder will only use less than 33 percent of the whole time interval. But if we focus on how much work they finished using cloud rather than how many time they used we can validate a variable in our model.
+
+Consider a auction market, everybody will have their own desired value(i.e. the maximum price they are willing to pay). Then the bidder will choose their own strategy to determine a price based on their desired value. Now for cloud bidding market. We define "True Value" of a bidder as the maximum of price he is willing to pay for unit service, noted by $v_i$ for user i. Define $\sigma_i v_i$ as the lost of user i when the user didn't bid it successfully. And we define $s(t)$ as spot price at time t. $b(t)$ is the bid price the user choose. A function $F()$ as the choosing strategy function for user i, thus, $b(t)=F(v(t))$. Note that we have $F$ continuously differentiable and increasing. Define on-demand price as $d(t)$ and we assume $d$ is constant for the time interval we are interested in.
+
+\subsection{Propositions}
+Claim: 
 
 
-I designed a notion of "True value", which is the total utility of the user when he or she pays nothing for the services.
+\section{Single bidder's optimal bidding strategy}
+For users, if choose on-demand pricing, the expected payoff for him is $Ed_i=1(v_i-d)$. If choose spot pricing, the expected payoff for him is $Es_i=(1-P(F(v_i)\leq s(t)))(v_i-s(t))-P(F(v_i)\leq s(t))\sigma v_i$. Now if we want the user to choose spot pricing instead of on demand pricing, we will need$G_i=Es_i-Ed_i\geq 0$
 
-%\section{Single bidder's optimal bidding strategy}
+\begin{equation} 
+\begin{split}
+G_i & =(1-P(F(v_i)\leq s(t)))-P(F(v_i)\leq s(t))\sigma v_i-v_i+d\\
+& =v_i-s(t)-P(F(v_i)\leq s(t))v_i+P(F(v_i)\leq s(t))s(t)-P(F(v_i)\leq s(t))\sigma v_i-v_i+d\\
+& =-d-P(F(v_i)\leq s(t))v_i+P(F(v_i)\leq s(t))s(t)-P(F(v_i)\leq s(t))\sigma v_i+d\\
+& =-P(F(v_i)\leq s(t))(v_i+v_i\sigma-s(t))+d-s(t)
+\end{split}
+\end{equation}
+
+Now since we have $v_i > s(t)$(otherwise we won't consider to use cloud) we can see that the best way to maximize your payoff is to minimize your probability to be an unsuccessful bidder.
 
 %\section{Experiment of applying our strategy to historical data} 
 
 %\section{Conclusion}
 
 %\section{References}
+
+
 
 \end{document}
 
